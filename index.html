@@ -1,4 +1,10 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday!</title>
+  <style>
   /* Reset and base */
   * {
     box-sizing: border-box;
@@ -152,3 +158,139 @@
     }
   }
 </style>
+
+</head>
+<body>
+    <div class="confetti-container" aria-hidden="true">
+</div>
+
+  <header>
+    <h1><div class="hearts" aria-hidden="true">
+  <span class="heart">❤️</span>
+  <span class="heart">💚</span>
+  <span class="heart">❤️</span>
+</div>Happy Birthday!</h1>
+    <p class="subtitle">Click on each friend's profile to read their special message for you</p>
+  </header>
+
+  <section class="group-photo" aria-label="Group photo of six friends smiling together in a celebratory setting with birthday decorations">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d86cd3a5-c046-4e23-97e8-f215e78ba75f.png" alt="Group photo of six friends smiling together in a celebratory setting with birthday decorations" />
+  </section>
+
+  <main class="profiles-container" role="list">
+    <!-- Profile cards will be inserted here by JS -->
+  </main>
+
+  <footer>
+    Made with love by your friends ❤️
+  </footer>
+
+  <script>
+    // Friend data
+    const friends = [
+      {
+        id: 1,
+        name: "Bryan",
+        message: "Happy Birthday! You're an amazing friend who always knows how to make everyone smile. Here's to many more years of laughter and adventures together!",
+        initials: "YN"
+      },
+      {
+        id: 2,
+        name: "Jamir",
+        message: "Wishing you the happiest of birthdays! Your kindness and energy light up every room you enter. So grateful to have you in my life!",
+        initials: "F2"
+      },
+      {
+        id: 3,
+        name: "Joshua",
+        message: "Happy Birthday to the most incredible friend! Your thoughtfulness and humor make every day better. Cheers to celebrating you today!",
+        initials: "F3"
+      },
+      {
+        id: 4,
+        name: "Justin",
+        message: "Another year older, another year more awesome! Your friendship means the world to me. Have the most magical birthday celebration!",
+        initials: "F4"
+      },
+      {
+        id: 5,
+        name: "Kien",
+        message: "Happy Birthday! Your positive energy is contagious and your friendship is priceless. Hope your day is as wonderful as you are!",
+        initials: "F5"
+      },
+      {
+        id: 6,
+        name: "Kenneth",
+        message: "To the birthday star! Your friendship has brought so much joy and laughter into my life. Wishing you all the happiness you deserve!",
+        initials: "F6"
+      }
+    ];
+
+    const container = document.querySelector('.profiles-container');
+
+    // Create profile cards
+    friends.forEach(friend => {
+      const card = document.createElement('article');
+      card.className = 'profile-card';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-controls', `message-${friend.id}`);
+
+      card.innerHTML = `
+        <div class="profile-pic" aria-label="Profile picture of ${friend.name}" role="button" tabindex="0">${friend.initials}</div>
+        <h2 class="friend-name">${friend.name}</h2>
+        <button class="toggle-btn" aria-controls="message-${friend.id}" aria-expanded="false">Read Message</button>
+        <div class="message-box" id="message-${friend.id}" aria-live="polite">${friend.message}</div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // Toggle message function
+    function toggleMessage(card) {
+      const btn = card.querySelector('.toggle-btn');
+      const message = card.querySelector('.message-box');
+      const expanded = card.getAttribute('aria-expanded') === 'true';
+
+      if (expanded) {
+        message.classList.remove('show');
+        card.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Read Message';
+      } else {
+        // Close any other open messages
+        document.querySelectorAll('.profile-card[aria-expanded="true"]').forEach(openCard => {
+          openCard.querySelector('.message-box').classList.remove('show');
+          openCard.setAttribute('aria-expanded', 'false');
+          openCard.querySelector('.toggle-btn').setAttribute('aria-expanded', 'false');
+          openCard.querySelector('.toggle-btn').textContent = 'Read Message';
+        });
+
+        message.classList.add('show');
+        card.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Hide Message';
+        // Scroll into view smoothly
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Add event listeners
+    document.querySelectorAll('.profile-card').forEach(card => {
+      const pic = card.querySelector('.profile-pic');
+      const btn = card.querySelector('.toggle-btn');
+
+      pic.addEventListener('click', () => toggleMessage(card));
+      pic.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMessage(card);
+        }
+      });
+
+      btn.addEventListener('click', () => toggleMessage(card));
+    });
+  </script>
+</body>
+</html>
