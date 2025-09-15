@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift for Our Friend</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #a3e4d7, #f5b7b1);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 40px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #2e8b57;
+    }
+
+    .group-photo img {
+      width: 80%;
+      max-width: 500px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .friends {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .friend {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .friend:hover {
+      transform: scale(1.1);
+    }
+
+    .friend img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #2e8b57;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .friend p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d63384;
+    }
+
+    .message-box {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 20px auto;
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎉 Birthday Decorations 🎉 */
+    .decoration {
+      position: absolute;
+      width: 100px;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    .balloon-left {
+      top: 20px;
+      left: 20px;
+    }
+
+    .balloon-right {
+      top: 20px;
+      right: 20px;
+    }
+
+    .cake {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+    }
+
+    h1 {
+      font-family: 'Lobster', cursive;
+      font-size: 3rem; /* adjust size as needed */
+      color: #ff4fa3; /* pink shade */
+      text-align: center;
+    }
+
+
+  </style> 
+</head>
+<body>
+  <header>
+    <h1>Happy 18th Birthday Kristen Davo! 🎂🎉</h1>
+    <div class="group-photo">
+      <img src="C:\Users\BRYAN\Downloads\532029842_3707749279518127_1312582186450450428_n.jpg" alt="Group Photo">
+    </div>
+
+    <!-- Decorations -->
+    <img src="C:\Users\BRYAN\Downloads\67ff54a2289b7b44b5641cdb279f2db6-removebg-preview.png" alt="Balloon Left" class="decoration balloon-left">
+    <img src="C:\Users\BRYAN\Downloads\67ff54a2289b7b44b5641cdb279f2db6-removebg-preview.png" alt="Balloon Right" class="decoration balloon-right">
+  </header>
+
+  <section class="friends">
+    <div class="friend" onclick="showMessage(1)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 1">
+      <p>Joshua</p>
+    </div>
+    <div class="friend" onclick="showMessage(2)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 2">
+      <p>Justin</p>
+    </div>
+    <div class="friend" onclick="showMessage(3)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 3">
+      <p>Jamir</p>
+    </div>
+    <div class="friend" onclick="showMessage(4)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 4">
+      <p>Kenneth</p>
+    </div>
+    <div class="friend" onclick="showMessage(5)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 5">
+      <p>Kien</p>
+    </div>
+    <div class="friend" onclick="showMessage(6)">
+      <img src="C:\Users\BRYAN\Downloads\WaWA.jpg" alt="Friend 6">
+      <p>Bryan</p>
+    </div>
+  </section>
+
+  <section id="messages">
+    <div id="msg1" class="message-box">Happy Birthday Kristen! 🎉 Wishing you all the love, joy, and success you deserve 💌 – Joshua</div>
+    <div id="msg2" class="message-box">Happy Birthday Kristen! 🎂 Thanks for being such a kind and awesome friend 💕 – Justin</div>
+    <div id="msg3" class="message-box">Happy Birthday Kristen! 🌸 Always stay strong and keep smiling ✨ – Jamir</div>
+    <div id="msg4" class="message-box">Happy Birthday Kristen! 💚 May your dreams come true and your days be full of laughter 😄 – Kenneth</div>
+    <div id="msg5" class="message-box">Happy Birthday Kristen! 🎁 You’re truly special, wishing you endless happiness 💖 – Kien</div>
+    <div id="msg6" class="message-box">Happy Birthday Kristen! 🥳 Thank you for all the fun memories, cheers to many more! 🙌 – Bryan</div>
+  </section>
+
+  <!-- Birthday Cake Decoration -->
+  
+
+  <script>
+    function showMessage(num) {
+      document.querySelectorAll('.message-box').forEach(box => box.style.display = "none");
+      document.getElementById("msg" + num).style.display = "block";
+    }
+  </script>
+</body>
+</html>
