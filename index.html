@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday!</title>
   <style>
-  /* Reset and base */
+  
   * {
     box-sizing: border-box;
   }
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* New green-pink gradient background */
+    
     background: linear-gradient(135deg, #a8e6cf 0%, #ff8b94 100%);
     color: #2f4f4f;
     min-height: 100vh;
@@ -21,13 +21,13 @@
     align-items: center;
   }
   h1 {
-    color: #2e7d32; /* green */
+    color: #2e7d32; 
     font-size: 3.5rem;
     margin-bottom: 0.2em;
     text-align: center;
   }
   p.subtitle {
-    color: #d81b60; /* pink */
+    color: #d81b60;
     font-size: 1.25rem;
     max-width: 600px;
     text-align: center;
@@ -56,7 +56,7 @@
     width: 90vw;
     margin-bottom: 4rem;
   }
-  /* Profile card */
+  
   .profile-card {
     background: white;
     border-radius: 1.5rem;
@@ -72,7 +72,7 @@
     transform: scale(1.05);
     z-index: 10;
   }
-  /* Profile picture circle */
+  
   .profile-pic {
     width: 96px;
     height: 96px;
@@ -92,14 +92,14 @@
   .profile-pic:hover {
     transform: scale(1.1);
   }
-  /* Friend name */
+ 
   .friend-name {
     font-size: 1.25rem;
     font-weight: 600;
     color: #2e7d32;
     margin-bottom: 0.5rem;
   }
-  /* Button */
+  
   .toggle-btn {
     background-color: #d81b60;
     border: none;
@@ -114,7 +114,7 @@
   .toggle-btn:hover {
     background-color: #b0144a;
   }
-  /* Message box */
+  
   .message-box {
     background-color: #ffe4ec;
     border-left: 6px solid #2e7d32;
@@ -129,11 +129,11 @@
     transition: max-height 0.5s ease, opacity 0.5s ease;
   }
   .message-box.show {
-    max-height: 500px; /* large enough for message */
+    max-height: 500px;
     opacity: 1;
     margin-top: 0.5rem;
   }
-  /* Footer */
+ 
   footer {
     background-color: #2e7d32;
     color: #f8bbd0;
@@ -144,7 +144,7 @@
     font-weight: 600;
     user-select: none;
   }
-  /* Responsive text sizes */
+  
   @media (max-width: 480px) {
     h1 {
       font-size: 2.5rem;
@@ -173,7 +173,7 @@
     <p class="subtitle">Click on each friend's profile to read their special message for you</p>
   </header>
   <main class="profiles-container" role="list">
-    <!-- Profile cards will be inserted here by JS -->
+    
   </main>
 
   <script>
@@ -219,7 +219,7 @@
 
     const container = document.querySelector('.profiles-container');
 
-    // Create profile cards
+    
     friends.forEach(friend => {
       const card = document.createElement('article');
       card.className = 'profile-card';
@@ -238,7 +238,7 @@
       container.appendChild(card);
     });
 
-    // Toggle message function
+   
     function toggleMessage(card) {
       const btn = card.querySelector('.toggle-btn');
       const message = card.querySelector('.message-box');
@@ -250,7 +250,7 @@
         btn.setAttribute('aria-expanded', 'false');
         btn.textContent = 'Read Message';
       } else {
-        // Close any other open messages
+        
         document.querySelectorAll('.profile-card[aria-expanded="true"]').forEach(openCard => {
           openCard.querySelector('.message-box').classList.remove('show');
           openCard.setAttribute('aria-expanded', 'false');
@@ -262,12 +262,12 @@
         card.setAttribute('aria-expanded', 'true');
         btn.setAttribute('aria-expanded', 'true');
         btn.textContent = 'Hide Message';
-        // Scroll into view smoothly
+        
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
-    // Add event listeners
+    
     document.querySelectorAll('.profile-card').forEach(card => {
       const pic = card.querySelector('.profile-pic');
       const btn = card.querySelector('.toggle-btn');
