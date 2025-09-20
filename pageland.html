@@ -2,61 +2,292 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday!</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-    }
-    .container {
-      max-width: 600px;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
+  
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    background: linear-gradient(0deg, #a8e6cf 0%, #ff8b94 100%);
+    color: #2f4f4f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    color: #2e7d32; 
+    font-size: 3.5rem;
+    margin-bottom: 0.2em;
+    text-align: center;
+  }
+  p.subtitle {
+    color: #d81b60;
+    font-size: 1.25rem;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto 2rem auto;
+  }
+  /* Group photo */
+  .group-photo {
+    max-width: 600px;
+    width: 90vw;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 3rem;
+  }
+  .group-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* Container for profiles */
+  .profiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 960px;
+    width: 90vw;
+    margin-bottom: 4rem;
+  }
+  
+  .profile-card {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .profile-card:hover {
+    box-shadow: 0 8px 24px rgba(216, 27, 96, 0.4);
+    transform: scale(1.05);
+    z-index: 10;
+  }
+  
+  .profile-pic {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d81b60, #2e7d32);
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.6);
+    transition: transform 0.3s ease;
+  }
+  .profile-pic:hover {
+    transform: scale(1.1);
+  }
+ 
+  .friend-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+  }
+  
+  .toggle-btn {
+    background-color: #d81b60;
+    border: none;
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  .toggle-btn:hover {
+    background-color: #b0144a;
+  }
+  
+  .message-box {
+    background-color: #ffe4ec;
+    border-left: 6px solid #2e7d32;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    color: #2e7d32;
+    font-size: 1rem;
+    line-height: 1.4;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+  .message-box.show {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+ 
+  footer {
+    background-color: #2e7d32;
+    color: #f8bbd0;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    user-select: none;
+  }
+  
+  @media (max-width: 480px) {
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      animation: glow 2s infinite alternate;
+      font-size: 2.5rem;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff6fa7; }
-      to { text-shadow: 0 0 20px #fff, 0 0 40px #ff2d7a; }
+    .friend-name {
+      font-size: 1.1rem;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+    .toggle-btn {
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem;
     }
-    a.button {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #ff2d7a;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 1.2rem;
-      transition: 0.3s;
-    }
-    a.button:hover {
-      background: #e6005c;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
-  <div class="container">
-    <h1>🎉 Happy Birthday, [Name]! 🎉</h1>
-    <p>We prepared something special for you — a collection of our heartfelt messages. 💌</p>
-    <a href="index.html" class="button">Open Your Gift 🎁</a>
-  </div>
+    <div class="confetti-container" aria-hidden="true">
+</div>
+
+  <header>
+    <h1><div class="hearts" aria-hidden="true">
+  <span class="heart">💗</span>
+  <span class="heart">💚</span>
+  <span class="heart">💗</span>
+</div>Happy Birthday Kristen!</h1>
+    <p class="subtitle">A digital gift<br/> by Bryan, Dexter, Kenneth, Kien, Jamir, Joshua, and Justin.</p>
+  </header>
+  <main class="profiles-container" role="list">
+    
+  </main>
+
+  <script>
+    // Friend data
+    const friends = [
+      {
+        id: 1,
+        name: "Bryan",
+        message: "Happy Birthday! You're an amazing friend who always knows how to make everyone smile. Here's to many more years of laughter and adventures together!",
+        initials: "F1"
+      },
+      {
+        id: 2,
+        name: "Dexter",
+        message: "Another year older, another year more awesome! Your friendship means the world to me. Have the most magical birthday celebration!",
+        initials: "F2"
+      },
+      {
+        id: 3,
+        name: "Kenneth",
+        message: "Happy Birthday.",
+        initials: "F2"
+      },
+      {
+        id: 4,
+        name: "Kien",
+        message: "Happy Birthday to the most incredible friend! Your thoughtfulness and humor make every day better. Cheers to celebrating you today!",
+        initials: "F3"
+      },
+      {
+        id: 5,
+        name: "Jamir",
+        message: "Hi Kristen. Happy Birthday. I have barely spent my time with you and I haven't even got to know you. Nevertheless, I find it special that you invited me to one of the most special days in your life, Thank you. Happy Birthday Kristen, I hope you don't change every part of you that loves, and cares for the beauty of the world. May you reach your dream and life, and may opportunities come your way.",
+        initials: "F4"
+      },
+      {
+        id: 6,
+        name: "Joshua",
+        message: "Happy Birthday! Your positive energy is contagious and your friendship is priceless. Hope your day is as wonderful as you are!",
+        initials: "F5"
+      },
+      {
+        id: 7,
+        name: "Justin",
+        message: "To the birthday star! Your friendship has brought so much joy and laughter into my life. Wishing you all the happiness you deserve!",
+        initials: "F6"
+      }
+    ];
+
+    const container = document.querySelector('.profiles-container');
+
+    
+    friends.forEach(friend => {
+      const card = document.createElement('article');
+      card.className = 'profile-card';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-controls', `message-${friend.id}`);
+
+      card.innerHTML = `
+        <div class="profile-pic" aria-label="Profile picture of ${friend.name}" role="button" tabindex="0">${friend.initials}</div>
+        <h2 class="friend-name">${friend.name}</h2>
+        <button class="toggle-btn" aria-controls="message-${friend.id}" aria-expanded="false">Read Message</button>
+        <div class="message-box" id="message-${friend.id}" aria-live="polite">${friend.message}</div>
+      `;
+
+      container.appendChild(card);
+    });
+
+   
+    function toggleMessage(card) {
+      const btn = card.querySelector('.toggle-btn');
+      const message = card.querySelector('.message-box');
+      const expanded = card.getAttribute('aria-expanded') === 'true';
+
+      if (expanded) {
+        message.classList.remove('show');
+        card.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Read Message';
+      } else {
+        
+        document.querySelectorAll('.profile-card[aria-expanded="true"]').forEach(openCard => {
+          openCard.querySelector('.message-box').classList.remove('show');
+          openCard.setAttribute('aria-expanded', 'false');
+          openCard.querySelector('.toggle-btn').setAttribute('aria-expanded', 'false');
+          openCard.querySelector('.toggle-btn').textContent = 'Read Message';
+        });
+
+        message.classList.add('show');
+        card.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Hide Message';
+        
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    
+    document.querySelectorAll('.profile-card').forEach(card => {
+      const pic = card.querySelector('.profile-pic');
+      const btn = card.querySelector('.toggle-btn');
+
+      pic.addEventListener('click', () => toggleMessage(card));
+      pic.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMessage(card);
+        }
+      });
+
+      btn.addEventListener('click', () => toggleMessage(card));
+    });
+  </script>
 </body>
 </html>
