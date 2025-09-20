@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff6fa7; }
+      to { text-shadow: 0 0 20px #fff, 0 0 40px #ff2d7a; }
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #ff2d7a;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    a.button:hover {
+      background: #e6005c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Happy Birthday, [Name]! 🎉</h1>
+    <p>We prepared something special for you — a collection of our heartfelt messages. 💌</p>
+    <a href="index.html" class="button">Open Your Gift 🎁</a>
+  </div>
+</body>
+</html>
