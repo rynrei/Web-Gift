@@ -1,169 +1,146 @@
 * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-    background: linear-gradient(0deg, #a8e6cf 0%, #ff8b94 100%);
-    color: #2f4f4f;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(0deg, #a8e6cf 0%, #ff8b94 100%);
+  color: #2f4f4f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  color: #2e7d32; 
+  font-size: 3.5rem;
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+p.subtitle {
+  color: #d81b60;
+  font-size: 1.25rem;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto 2rem auto;
+}
+/* Group photo */
+.group-photo {
+  max-width: 600px;
+  width: 90vw;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin-bottom: 3rem;
+}
+.group-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Container for profiles */
+.profiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 960px;
+  width: 90vw;
+  margin-bottom: 4rem;
+}
+.profile-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.profile-card:hover {
+  box-shadow: 0 8px 24px rgba(216, 27, 96, 0.4);
+  transform: scale(1.05);
+  z-index: 10;
+}
+/* Avatar styling */
+.profile-pic {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.6);
+  transition: transform 0.3s ease;
+}
+.profile-pic:hover {
+  transform: scale(1.1);
+}
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.friend-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 0.5rem;
+}
+.toggle-btn {
+  background-color: #d81b60;
+  border: none;
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+.toggle-btn:hover {
+  background-color: #b0144a;
+}
+.message-box {
+  background-color: #ffe4ec;
+  border-left: 6px solid #2e7d32;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: #2e7d32;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+.message-box.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+footer {
+  background-color: #2e7d32;
+  color: #f8bbd0;
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  user-select: none;
+}
+@media (max-width: 480px) {
   h1 {
-    color: #2e7d32; 
-    font-size: 3.5rem;
-    margin-bottom: 0.2em;
-    text-align: center;
+    font-size: 2.5rem;
   }
-  p.subtitle {
-    color: #d81b60;
-    font-size: 1.25rem;
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto 2rem auto;
-  }
-  /* Group photo */
-  .group-photo {
-    max-width: 600px;
-    width: 90vw;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    margin-bottom: 3rem;
-  }
-  .group-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  /* Container for profiles */
-  .profiles-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 960px;
-    width: 90vw;
-    margin-bottom: 4rem;
-  }
-  
-  .profile-card {
-    background: white;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 1.5rem 1.5rem 2rem;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  .profile-card:hover {
-    box-shadow: 0 8px 24px rgba(216, 27, 96, 0.4);
-    transform: scale(1.05);
-    z-index: 10;
-  }
-  
-  .profile-pic {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #d81b60, #2e7d32);
-    color: white;
-    font-weight: 700;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.6);
-    transition: transform 0.3s ease;
-  }
-  .profile-pic:hover {
-    transform: scale(1.1);
-  }
- 
   .friend-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
   }
-  
   .toggle-btn {
-    background-color: #d81b60;
-    border: none;
-    color: white;
-    padding: 0.4rem 1.2rem;
-    border-radius: 9999px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 1rem;
   }
-  .toggle-btn:hover {
-    background-color: #b0144a;
-  }
-  
-  .message-box {
-    background-color: #ffe4ec;
-    border-left: 6px solid #2e7d32;
-    border-radius: 0.75rem;
-    padding: 1rem 1.25rem;
-    color: #2e7d32;
-    font-size: 1rem;
-    line-height: 1.4;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-  }
-  .message-box.show {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 0.5rem;
-  }
- 
-  footer {
-    background-color: #2e7d32;
-    color: #f8bbd0;
-    width: 100%;
-    text-align: center;
-    padding: 1.5rem 0;
-    font-size: 1rem;
-    font-weight: 600;
-    user-select: none;
-  }
-  
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2.5rem;
-    }
-    .friend-name {
-      font-size: 1.1rem;
-    }
-    .toggle-btn {
-      font-size: 0.85rem;
-      padding: 0.3rem 1rem;
-    }
-     .profile-pic {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin: 0 auto 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+}
