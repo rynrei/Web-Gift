@@ -5,22 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday!</title>
   <link rel="stylesheet" href="pagelandstyle.css">
+  <style>
+    /* Avatar styling */
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 auto 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-    <div class="confetti-container" aria-hidden="true">
-</div>
+  <div class="confetti-container" aria-hidden="true"></div>
 
   <header>
-    <h1><div class="hearts" aria-hidden="true">
-  <span class="heart">💗</span>
-  <span class="heart">💚</span>
-  <span class="heart">💗</span>
-</div>Happy Birthday Kristen!</h1>
+    <h1>
+      <div class="hearts" aria-hidden="true">
+        <span class="heart">💗</span>
+        <span class="heart">💚</span>
+        <span class="heart">💗</span>
+      </div>
+      Happy Birthday Kristen!
+    </h1>
     <p class="subtitle">A digital gift<br/> by Bryan, Dexter, Kenneth, Kien, Jamir, Joshua, and Justin.</p>
   </header>
-  <main class="profiles-container" role="list">
-    
-  </main>
+
+  <main class="profiles-container" role="list"></main>
 
   <script>
     // Friend data
@@ -35,43 +57,43 @@
         id: 2,
         name: "Dexter",
         message: "Another year older, another year more awesome! Your friendship means the world to me. Have the most magical birthday celebration!",
-        initials: "F2"
+        image: "Images/WaWA.jpg"
       },
       {
         id: 3,
         name: "Kenneth",
         message: "Happy Birthday.",
-        initials: "F2"
+        image: "Images/WaWA.jpg"
       },
       {
         id: 4,
         name: "Kien",
         message: "Happy Birthday to the most incredible friend! Your thoughtfulness and humor make every day better. Cheers to celebrating you today!",
-        initials: "F3"
+        image: "Images/WaWA.jpg"
       },
       {
         id: 5,
         name: "Jamir",
         message: "Hi Kristen. Happy Birthday. I have barely spent my time with you and I haven't even got to know you. Nevertheless, I find it special that you invited me to one of the most special days in your life, Thank you. Happy Birthday Kristen, I hope you don't change every part of you that loves, and cares for the beauty of the world. May you reach your dream and life, and may opportunities come your way.",
-        initials: "F4"
+        image: "Images/WaWA.jpg"
       },
       {
         id: 6,
         name: "Joshua",
         message: "Happy Birthday! Your positive energy is contagious and your friendship is priceless. Hope your day is as wonderful as you are!",
-        initials: "F5"
+        image: "Images/WaWA.jpg"
       },
       {
         id: 7,
         name: "Justin",
         message: "To the birthday star! Your friendship has brought so much joy and laughter into my life. Wishing you all the happiness you deserve!",
-        initials: "F6"
+        image: "Images/WaWA.jpg"
       }
     ];
 
     const container = document.querySelector('.profiles-container');
 
-    
+    // Build profile cards
     friends.forEach(friend => {
       const card = document.createElement('article');
       card.className = 'profile-card';
@@ -81,7 +103,9 @@
       card.setAttribute('aria-controls', `message-${friend.id}`);
 
       card.innerHTML = `
-        <div class="profile-pic" aria-label="Profile picture of ${friend.name}" role="button" tabindex="0">${friend.initials}</div>
+        <div class="profile-pic" aria-label="Profile picture of ${friend.name}" role="button" tabindex="0">
+          <img src="${friend.image}" alt="${friend.name}'s picture">
+        </div>
         <h2 class="friend-name">${friend.name}</h2>
         <button class="toggle-btn" aria-controls="message-${friend.id}" aria-expanded="false">Read Message</button>
         <div class="message-box" id="message-${friend.id}" aria-live="polite">${friend.message}</div>
@@ -90,7 +114,7 @@
       container.appendChild(card);
     });
 
-   
+    // Toggle message visibility
     function toggleMessage(card) {
       const btn = card.querySelector('.toggle-btn');
       const message = card.querySelector('.message-box');
@@ -102,7 +126,6 @@
         btn.setAttribute('aria-expanded', 'false');
         btn.textContent = 'Read Message';
       } else {
-        
         document.querySelectorAll('.profile-card[aria-expanded="true"]').forEach(openCard => {
           openCard.querySelector('.message-box').classList.remove('show');
           openCard.setAttribute('aria-expanded', 'false');
@@ -114,12 +137,12 @@
         card.setAttribute('aria-expanded', 'true');
         btn.setAttribute('aria-expanded', 'true');
         btn.textContent = 'Hide Message';
-        
+
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
-    
+    // Add event listeners
     document.querySelectorAll('.profile-card').forEach(card => {
       const pic = card.querySelector('.profile-pic');
       const btn = card.querySelector('.toggle-btn');
@@ -137,4 +160,3 @@
   </script>
 </body>
 </html>
-
