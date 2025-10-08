@@ -115,10 +115,10 @@ p.subtitle {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
+  transition: all 0.5s ease;
 }
 .message-box.show {
-  max-height: 500px;
+  max-height: 2000px; /* larger so long messages fit */
   opacity: 1;
   margin-top: 0.5rem;
 }
