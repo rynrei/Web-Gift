@@ -31,10 +31,10 @@ body {
 
 .hero img {
   width: 60%;
-  max-width: 400px;
+  max-width: 570px;
   border-radius: 20px;
   object-fit: cover;
-  margin-right: 150px;
+  margin-right: 200 px;
 }
 
 .text {
@@ -127,4 +127,3 @@ a.button:hover {
     max-width: 250px;
   }
 }
-
