@@ -30,10 +30,11 @@ body {
 }
 
 .hero img {
-  width: 45%;
+  width: 60%;
   max-width: 400px;
   border-radius: 20px;
   object-fit: cover;
+  margin-right: 150px;
 }
 
 .text {
@@ -126,3 +127,4 @@ a.button:hover {
     max-width: 250px;
   }
 }
+
