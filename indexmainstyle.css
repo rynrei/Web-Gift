@@ -1,101 +1,184 @@
 body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f89ec2;
-      color: white;
-    }
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f89ec2;
+  color: white;
+}
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: #ff8fb1;
-      position: relative;
-      overflow: hidden;
-    }
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #ff8fb1;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 50px;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  flex-wrap: wrap;
+}
 
-    .hero img {
-      width: 800px;
-      border-radius: 20px;
-      object-fit: cover;
-      margin-right: 330px;
-    }
+.hero img {
+  width: 800px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-right: 330px;
+}
 
-    .text {
-      flex: 1;
-      padding: 20px;
-    }
+.text {
+  flex: 1;
+  padding: 20px;
+}
 
-    .text h1 {
-      font-size: 5rem;
-      font-weight: bold;
-      line-height: 1.1;
-    }
+.text h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
 
-    .text span {
-      display: block;
-      font-size: 1rem;
-      margin-top: 20px;
-      color: #fff;
-      opacity: 0.8;
-    }
+.text span {
+  display: block;
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #fff;
+  opacity: 0.8;
+}
 
-    
-    .nav {
-      position: absolute;
-      top: 20px;
-      left: 30px;
-      right: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      font-weight: bold;
-    }
+.nav {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  font-weight: bold;
+}
 
-    .nav .logo {
-      font-size: 1.5rem;
-    }
+.nav .logo {
+  font-size: 1.5rem;
+}
 
-    .nav ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-    .nav ul li {
-      margin-left: 20px;
-    }
+.nav ul li {
+  margin-left: 20px;
+}
 
-    .nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-    a.button {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #ff2d7a;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 1.2rem;
-      transition: 0.3s;
-    }
-    a.button:hover {
-      background: #e6005c;
-    } 
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+a.button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ff2d7a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+a.button:hover {
+  background: #e6005c;
+}
+
+/* =======================
+   📱 Responsive Design
+   ======================= */
+@media (max-width: 1024px) {
+  .hero img {
+    width: 500px;
+    margin-right: 0;
+  }
+
+  .text h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding-top: 100px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero img {
+    width: 300px;
+    margin: 20px 0 0 0;
+  }
+
+  .text h1 {
+    font-size: 2.5rem;
+  }
+
+  .text span {
+    font-size: 0.9rem;
+  }
+
+  a.button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .nav {
+    top: 10px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .nav .logo {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 10px;
+  }
+
+  .text h1 {
+    font-size: 2rem;
+  }
+
+  .text span {
+    font-size: 0.85rem;
+  }
+
+  .hero img {
+    width: 250px;
+  }
+
+  a.button {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+}
